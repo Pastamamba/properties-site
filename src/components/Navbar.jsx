@@ -5,26 +5,20 @@ import './navbar.css';
 import IconButton from "@mui/material/IconButton";
 import {MenuItem, Menu} from "@mui/material";
 
-const Navbar = () => {
+const Navbar = ({ favourites, toggleFavorite }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [favoriteProperties, setFavoriteProperties] = useState([]);
-    const [properties, setProperties] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         const loadProperties = async () => {
             const propertiesData = await import('../properties/properties.json');
-            setProperties(propertiesData.properties);
+            const filteredProperties = propertiesData.properties.filter(property => favourites.includes(property.id));
+            setFavoriteProperties(filteredProperties);
         };
 
         loadProperties();
-    }, []);
-
-    useEffect(() => {
-        const favoriteIds = JSON.parse(localStorage.getItem('favourites')) || [];
-        const favorites = properties.filter(property => favoriteIds.includes(property.id));
-        setFavoriteProperties(favorites);
-    }, [properties]);
+    }, [favourites]);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -39,10 +33,9 @@ const Navbar = () => {
         navigate(`/property/${id}`);
     };
 
-    const removeFromFavorites = (id) => {
-        const updatedFavoriteIds = favoriteProperties.filter(property => property.id !== id).map(property => property.id);
-        localStorage.setItem('favourites', JSON.stringify(updatedFavoriteIds));
-        setFavoriteProperties(favoriteProperties.filter(property => property.id !== id));
+    const handleToggleFavorite = (propertyId, event) => {
+        event.stopPropagation();
+        toggleFavorite(propertyId);
     };
 
     return (
@@ -65,16 +58,13 @@ const Navbar = () => {
                     onClose={handleClose}
                 >
                     {favoriteProperties.length > 0 ? (
-                        favoriteProperties.map((property) => (
+                        favoriteProperties.map(property => (
                             <MenuItem key={property.id} onClick={() => navigateToProperty(property.id)}>
                                 <div className="favorite-item-content">
                                     <img src={property.picture} alt={property.type} className="favorite-image"/>
                                     <div className="favorite-info">
                                         {property.type} - {property.location}
-                                        <IconButton onClick={(e) => {
-                                            e.stopPropagation();
-                                            removeFromFavorites(property.id);
-                                        }}>
+                                        <IconButton onClick={(e) => handleToggleFavorite(property.id, e)}>
                                             <StarIcon/>
                                         </IconButton>
                                     </div>

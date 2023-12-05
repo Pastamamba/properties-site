@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
     List,
@@ -14,29 +14,12 @@ import {
 import StarIcon from '@mui/icons-material/Star';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 
-const ResultsList = ({ properties }) => {
+const ResultsList = ({ properties, favourites, toggleFavorite }) => {
     const navigate = useNavigate();
-    const [favorites, setFavorites] = useState([]);
     const isSmallScreen = useMediaQuery(theme => theme.breakpoints.down('sm'));
-
-    useEffect(() => {
-        const storedFavorites = JSON.parse(localStorage.getItem('favourites')) || [];
-        setFavorites(storedFavorites);
-    }, []);
 
     const handleListItemClick = (propertyId) => {
         navigate(`/property/${propertyId}`);
-    };
-
-    const toggleFavorite = (propertyId) => {
-        let updatedFavorites;
-        if (favorites.includes(propertyId)) {
-            updatedFavorites = favorites.filter(id => id !== propertyId);
-        } else {
-            updatedFavorites = [...favorites, propertyId];
-        }
-        setFavorites(updatedFavorites);
-        localStorage.setItem('favourites', JSON.stringify(updatedFavorites));
     };
 
     return (
@@ -78,7 +61,7 @@ const ResultsList = ({ properties }) => {
                                     e.stopPropagation();
                                     toggleFavorite(property.id);
                                 }}>
-                                    {favorites.includes(property.id) ? <StarIcon /> : <StarOutlineIcon />}
+                                    {favourites.includes(property.id) ? <StarIcon /> : <StarOutlineIcon />}
                                 </div>
                             </Grid>
                         </Grid>

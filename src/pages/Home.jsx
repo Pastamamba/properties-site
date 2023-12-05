@@ -1,11 +1,12 @@
 import {useState, useEffect, useCallback} from 'react';
 import {SearchForm} from "../components/SearchForm.jsx";
 import ResultsList from "../components/ResultsList.jsx";
+import Typography from "@mui/material/Typography";
 
-const Home = () => {
+const Home = ({favourites, toggleFavorite}) => {
     const [properties, setProperties] = useState([]);
     const [filteredProperties, setFilteredProperties] = useState([]);
-
+    const [showResults, setShowResults] = useState(false);
     const convertDateToMillis = (dateObj) => {
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         const monthNumber = monthNames.indexOf(dateObj.month) + 1;
@@ -63,6 +64,7 @@ const Home = () => {
         });
 
         setFilteredProperties(results);
+        setShowResults(true);
     });
 
     useEffect(() => {
@@ -78,13 +80,24 @@ const Home = () => {
             postcodeArea: searchParams.get('postcodeArea') || ''
         };
 
-        handleSearch(criteria);
+        if(Array.from(searchParams.keys()).length > 0) {
+            handleSearch(criteria);
+        } else {
+            setShowResults(false);
+        }
     }, [handleSearch]);
 
     return (
         <>
             <SearchForm onSearch={handleSearch} />
-            <ResultsList properties={filteredProperties} />
+            {showResults && (
+                <>
+                    <Typography variant="h6" style={{ margin: '20px 0' }}>
+                        Search Results: {filteredProperties.length}
+                    </Typography>
+                    <ResultsList properties={filteredProperties} favourites={favourites} toggleFavorite={toggleFavorite} />
+                </>
+            )}
         </>
     );
 };
