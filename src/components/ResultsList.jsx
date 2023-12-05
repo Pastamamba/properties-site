@@ -44,8 +44,8 @@ const ResultsList = ({ properties }) => {
             {properties.map((property) => (
                 <React.Fragment key={property.id}>
                     <ListItem button onClick={() => handleListItemClick(property.id)}>
-                        <Grid container alignItems="center">
-                            <Grid item xs={2}>
+                        <Grid container alignItems="flex-start" spacing={2}>
+                            <Grid item xs={12} sm={3}>
                                 <ListItemAvatar>
                                     <Avatar
                                         alt={`Image of ${property.type}`}
@@ -55,7 +55,7 @@ const ResultsList = ({ properties }) => {
                                     />
                                 </ListItemAvatar>
                             </Grid>
-                            <Grid item xs={9} style={{ display: isSmallScreen ? 'none' : 'block' }}>
+                            <Grid item xs={10} sm={8}>
                                 <ListItemText
                                     primary={property.type}
                                     secondary={
@@ -68,12 +68,12 @@ const ResultsList = ({ properties }) => {
                                                 {property.price} $
                                             </Typography>
                                             <br />
-                                            — {property.description}
+                                            { !isSmallScreen && <>— {property.description}<br /></>}
                                         </>
                                     }
                                 />
                             </Grid>
-                            <Grid item xs={1} style={{ textAlign: 'right' }}>
+                            <Grid item xs={2} sm={1} style={{ textAlign: 'right' }}>
                                 <div onClick={(e) => {
                                     e.stopPropagation();
                                     toggleFavorite(property.id);

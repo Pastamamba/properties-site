@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import StarIcon from '@mui/icons-material/Star';
-import './Navbar.css';
+import './navbar.css';
 import IconButton from "@mui/material/IconButton";
 import {MenuItem, Menu} from "@mui/material";
 
