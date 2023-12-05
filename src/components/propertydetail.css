@@ -1,0 +1,418 @@
+.mokit-card {
+    min-width: 12rem;
+    max-width: 25rem;
+    margin-bottom: 1em;
+    margin-right: 1em;
+}
+
+.mokit-body {
+    z-index: 1;
+}
+
+.mokit-body:hover {
+    cursor: pointer;
+    background: #eeeeee;
+}
+
+.card-content {
+    font-size: .75em;
+    margin: 0.2em 0 0;
+    line-height: 1.2;
+    font-family: futura-pt,sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.card-content h1 {
+    font-size: 1.1em;
+    margin-bottom: 0.1em;
+    line-height: 1.4;
+}
+
+.card-add-inf {
+    display: flex;
+    font-size: 1.3em;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card-add-inf span {
+    display: grid;
+    grid-template-columns: 40px 40px;
+    align-items: center;
+}
+
+.card-add-inf p {
+    align-items: center;
+    margin: 0;
+}
+
+.images {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.images::-webkit-scrollbar {
+    display: none;
+}
+
+.images img {
+    width: 70%;
+    pointer-events: none;
+    height: auto;
+    max-height: 500px;
+    background-size: cover;
+    margin-right: 10px;
+}
+
+.images.show {
+    justify-content: flex-start;
+}
+
+.images-content .slide:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.images-content .slide {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    position: absolute;
+    top: 50%;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+}
+
+.slide span {
+    font-size: 35px;
+    color: white;
+    line-height: 41px;
+    cursor: pointer;
+}
+
+.images-content:hover .slide {
+    opacity: 1;
+}
+
+.images-content .left{
+    height: 100%;
+    left: 0;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.images-content .right {
+    height: 100%;
+    right: 0;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.images-content .right:hover {
+    border-radius: 1.25em;
+}
+
+.images-content .left:hover {
+    border-radius: 1.25em;
+}
+
+.card-footer {
+    padding: 0.75rem 1.25rem;
+    margin-top: auto;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.location {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.card-text {
+    margin-bottom: 1rem;
+}
+
+.images-content {
+    width: 100%;
+    max-height: 500px;
+    background-color: transparent;
+    position: relative;
+
+}
+
+.btm-sliders {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+.btm-sliders span {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 0 4px;
+    display: inline-block;
+}
+
+.btm-sliders span:hover {
+    background: white;
+}
+
+.mokki-info-text {
+    margin-left: 0 !important;
+}
+
+.equipment {
+    border-top: 1px solid #dcdcdc;
+    padding: 1.5em 0;
+    margin-top: 1.5em;
+    margin-left: 0 !important;
+}
+
+.equipment .h1 {
+    font-size: 1.4375em;
+    margin-bottom: 1.5em;
+    font-family: futura-pt,sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.equipment-row {
+    font-size: .875em;
+    font-family: futura-pt,sans-serif;
+    min-width: 250px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.equipment-elements {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: .875em;
+    margin-bottom: 2em;
+}
+
+.equipment-elements span {
+    width: 6.25rem;
+    height: 6.25rem;
+    background: #e3e3e3 50% no-repeat;
+    color: #183153;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5em;
+}
+
+.equipment-elements svg {
+    width: 3em;
+    height: 3em;
+}
+
+.equipment-elements h2 {
+    font-size: 1em;
+    margin-bottom: 0.8em;
+    font-weight: 500;
+    font-family: futura-pt,sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.equipment-elements p {
+    margin-top: 0.2em;
+    margin-bottom: 0.3em;
+    font-size: .75em;
+}
+
+.show-all {
+    bottom: 1.5em;
+    left: 1.5em;
+    position: absolute;
+    color: #fff;
+    font-size: .875em;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding-left: 1.25em;
+    min-height: 1.375rem;
+    line-height: 1.375rem;
+    font-family: futura-pt,sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block !important;
+}
+
+.mokit-card .slide-show-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+}
+
+.slide .fas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 24px;
+}
+
+/* Add these to remove the default list styling from FontAwesome if it's in a list */
+.slide .fas::before {
+    display: block;
+    position: relative;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .images img {
+        width: 100%;
+        min-height: 350px;
+        max-height: 350px;
+    }
+
+    .images-content {
+        max-height: 350px;
+    }
+
+    .images {
+        max-height: 350px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .images {
+        flex-wrap: nowrap;
+    }
+
+    .images img {
+
+    }
+
+    .equipment-row {
+        margin-bottom: 0;
+
+    }
+
+    .equipment {
+        padding: 0 0;
+    }
+
+    .images-content .slide {
+        opacity: 1;
+    }
+
+}
+
+@media only screen and (max-width: 650px) {
+    .btm-sliders {
+        opacity: 0;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+
+    .show-all {
+        opacity: 0;
+    }
+    .images img {
+        width: 100%;
+        min-height: 300px;
+        max-height: 300px;
+        margin-right: 0;
+    }
+
+    .images-content {
+        max-height: 300px;
+    }
+
+    .images {
+        max-height: 300px;
+    }
+
+    .btm-sliders {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 475px) {
+
+    .mokit-card .slide-show-wrapper {
+        max-height: 275px;
+        min-height: 275px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .mokit-card .slide-show-wrapper {
+        max-height: 250px;
+        min-height: 250px;
+    }
+}
+
+@media (max-width: 390px) {
+
+    .mokit-card .slide-show-wrapper {
+        max-height: 224px;
+        min-height: 224px;
+    }
+}
+
+@media (max-width: 330px) {
+
+    .mokit-card .slide-show-wrapper {
+        max-height: 200px;
+        min-height: 200px;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+
+    .images img {
+        width: 100%;
+        min-height: 280px;
+        max-height: 280px;
+    }
+
+    .images-content {
+        max-height: 280px;
+    }
+
+    .images {
+        max-height: 280px;
+    }
+}
+
+@media (max-width: 310px) {
+
+    .mokit-card .slide-show-wrapper {
+        max-height: 180px;
+        min-height: 180px;
+    }
+}
+
+@media (max-width: 290px) {
+
+    .mokit-card .slide-show-wrapper {
+        max-height: 170px;
+        min-height: 170px;
+    }
+}
