@@ -6,8 +6,8 @@
       "bedrooms": 3,
       "price": 750000,
       "tenure": "Freehold",
-      "description": "Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
-      "location": "Petts Wood Road, Petts Wood, Orpington BR5",
+      "description": "Spacious three-bedroom house near the heart of London. Features a modern kitchen, large living area, and a private garden. Ideal for families looking for a mix of city life and peaceful living.",
+      "location": "Greenwich, London SE10",
       "picture": "/properties/prop1/0.png",
       "url": "properties/prop1.html",
       "imgs": [
@@ -16,11 +16,8 @@
         "/properties/prop1/2.png",
         "/properties/prop1/3.png"
       ],
-      "added": {
-        "month": "October",
-        "day": 12,
-        "year": 2022
-      }
+      "postcodeArea": "SE10",
+      "added": {"month": "October", "day": 12, "year": 2022}
     },
     {
       "id": "prop2",
@@ -28,8 +25,8 @@
       "bedrooms": 2,
       "price": 20000,
       "tenure": "Freehold",
-      "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-      "location": "Crofton Road Orpington BR6",
+      "description": "Modern two-bedroom apartment in the bustling area of Shoreditch. Features an open-plan living space, stylish interior, and close proximity to trendy bars and restaurants.",
+      "location": "Shoreditch, London E1",
       "picture": "/properties/prop2/0.png",
       "imgs": [
         "/properties/prop2/0.png",
@@ -37,21 +34,17 @@
         "/properties/prop1/2.png",
         "/properties/prop1/3.png"
       ],
-      "added": {
-        "month": "September",
-        "day": 14,
-        "year": 2022
-      }
+      "postcodeArea": "E1",
+      "added": {"month": "September", "day": 14, "year": 2022}
     },
     {
       "id": "prop3",
       "type": "Flat",
       "bedrooms": 2,
-      "postcodeArea": "NY",
       "price": 35000,
       "tenure": "Freehold",
-      "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-      "location": "Crofton Road Orpington BR6",
+      "description": "Chic two-bedroom flat located in the heart of Camden. Perfect for those who enjoy vibrant city living, with easy access to local markets, music venues, and eclectic dining.",
+      "location": "Camden, London NW1",
       "picture": "/properties/prop3/0.png",
       "imgs": [
         "/properties/prop3/0.png",
@@ -59,11 +52,8 @@
         "/properties/prop1/2.png",
         "/properties/prop1/3.png"
       ],
-      "added": {
-        "month": "September",
-        "day": 14,
-        "year": 2022
-      }
+      "postcodeArea": "NW1",
+      "added": {"month": "September", "day": 14, "year": 2022}
     },
     {
       "id": "prop4",
@@ -71,8 +61,8 @@
       "bedrooms": 2,
       "price": 399995,
       "tenure": "Freehold",
-      "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-      "location": "Crofton Road Orpington BR6",
+      "description": "Elegant two-bedroom flat in Kensington. Offers luxurious living with a contemporary design, a balcony with views, and is located near world-renowned shops and museums.",
+      "location": "Kensington, London W8",
       "picture": "/properties/prop4/0.png",
       "imgs": [
         "/properties/prop4/0.png",
@@ -80,11 +70,8 @@
         "/properties/prop1/2.png",
         "/properties/prop1/3.png"
       ],
-      "added": {
-        "month": "September",
-        "day": 14,
-        "year": 2022
-      }
+      "postcodeArea": "W8",
+      "added": {"month": "September", "day": 14, "year": 2022}
     },
     {
       "id": "prop5",
@@ -92,8 +79,8 @@
       "bedrooms": 2,
       "price": 399995,
       "tenure": "Freehold",
-      "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-      "location": "Crofton Road Orpington BR6",
+      "description": "Contemporary two-bedroom flat in the heart of Notting Hill. Features a sleek design, natural light, and is just steps away from famous markets and colorful townhouses.",
+      "location": "Notting Hill, London W11",
       "picture": "/properties/prop4/0.png",
       "imgs": [
         "/properties/prop4/0.png",
@@ -101,34 +88,26 @@
         "/properties/prop1/2.png",
         "/properties/prop1/3.png"
       ],
-      "postcodeArea": "NW",
-      "added": {
-        "month": "September",
-        "day": 14,
-        "year": 2022
-      }
+      "postcodeArea": "W11",
+      "added": {"month": "September", "day": 14, "year": 2022}
     },
     {
       "id": "prop6",
       "type": "House",
       "bedrooms": 3,
       "price": 750000,
-      "tenure": "Freehold",
       "imgs": [
         "/properties/prop4/0.png",
         "/properties/prop1/1.png",
         "/properties/prop1/2.png",
         "/properties/prop1/3.png"
       ],
-      "description": "Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
-      "location": "Petts Wood Road, Petts Wood, Orpington BR5",
+      "tenure": "Freehold",
+      "description": "Classic Victorian three-bedroom house in Richmond. Offers spacious rooms, a beautiful garden, and is close to the Thames, parks, and historic sites.",
+      "location": "Richmond, London TW10",
       "picture": "/properties/prop4/0.png",
-      "postcodeArea": "NW",
-      "added": {
-        "month": "October",
-        "day": 12,
-        "year": 2022
-      }
+      "postcodeArea": "TW10",
+      "added": {"month": "October", "day": 12, "year": 2022}
     },
     {
       "id": "prop7",
@@ -136,21 +115,17 @@
       "bedrooms": 2,
       "price": 750000,
       "tenure": "Freehold",
+      "description": "Cozy two-bedroom cottage in Hampstead. Features charming details, a fireplace, and a lovely garden. Nestled in a quiet neighborhood, yet close to the city center.",
+      "location": "Hampstead, London NW3",
       "imgs": [
         "/properties/prop4/0.png",
         "/properties/prop1/1.png",
         "/properties/prop1/2.png",
         "/properties/prop1/3.png"
       ],
-      "postcodeArea": "NW",
-      "description": "Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
-      "location": "Petts Wood Road, Petts Wood, Orpington BR5",
       "picture": "/properties/prop4/0.png",
-      "added": {
-        "month": "October",
-        "day": 12,
-        "year": 2022
-      }
+      "postcodeArea": "NW3",
+      "added": {"month": "October", "day": 12, "year": 2022}
     }
   ]
 }
