@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import StarIcon from '@mui/icons-material/Star';
-import './navbar.css';
+import '../styles/navbar.css';
 import IconButton from "@mui/material/IconButton";
 import {MenuItem, Menu} from "@mui/material";
 
@@ -45,8 +45,9 @@ const Navbar = ({ favourites, toggleFavorite }) => {
                     <img alt={"logo-image"} src={"/PropertyLogo.PNG"} className={'logo'}/>
                 </Link>
             </div>
+            <h2 style={{color: "white"}}>Properties</h2>
             <div className="navbar-favourites">
-                <IconButton onClick={handleClick} size="large" color="inherit">
+                <IconButton sx={{fontSize: "15px"}} onClick={handleClick} size="large" color="inherit">
                     Favourites
                     <StarIcon/>
                 </IconButton>

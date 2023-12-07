@@ -34,7 +34,7 @@ const ResultsList = ({ properties, favourites, toggleFavorite }) => {
                                         alt={`Image of ${property.type}`}
                                         src={property.imgs[0]}
                                         variant="square"
-                                        style={{ width: '100%', height: 'auto' }}
+                                        style={{ width: '70%', height: 'auto' }}
                                     />
                                 </ListItemAvatar>
                             </Grid>

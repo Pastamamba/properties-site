@@ -280,6 +280,22 @@
     position: relative;
 }
 
+.property-detail-div {
+    padding: 50px 8%;
+}
+
+.location-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.property-detail-description {
+    color: black;
+    font-size: 16px;
+}
+
 @media only screen and (max-width: 800px) {
 
     .images img {

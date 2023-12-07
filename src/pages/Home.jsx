@@ -64,7 +64,6 @@ const Home = ({favourites, toggleFavorite}) => {
         });
 
         setFilteredProperties(results);
-        setShowResults(true);
     });
 
     useEffect(() => {
@@ -79,25 +78,17 @@ const Home = ({favourites, toggleFavorite}) => {
             dateAddedEnd: searchParams.get('dateAddedEnd') || null,
             postcodeArea: searchParams.get('postcodeArea') || ''
         };
-
-        if(Array.from(searchParams.keys()).length > 0) {
-            handleSearch(criteria);
-        } else {
-            setShowResults(false);
-        }
+        handleSearch(criteria);
     }, [handleSearch]);
 
     return (
         <>
-            <SearchForm onSearch={handleSearch} />
-            {showResults && (
-                <>
-                    <Typography variant="h6" style={{ margin: '20px 0' }}>
-                        Search Results: {filteredProperties.length}
-                    </Typography>
-                    <ResultsList properties={filteredProperties} favourites={favourites} toggleFavorite={toggleFavorite} />
-                </>
-            )}
+            <SearchForm onSearch={handleSearch}/>
+            <Typography variant="h6" style={{margin: '20px 0'}}>
+                Search Results: {filteredProperties.length}
+            </Typography>
+            <ResultsList properties={filteredProperties} favourites={favourites}
+                         toggleFavorite={toggleFavorite}/>
         </>
     );
 };

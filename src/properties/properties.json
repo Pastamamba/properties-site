@@ -10,6 +10,7 @@
       "location": "Greenwich, London SE10",
       "picture": "/properties/prop1/0.png",
       "url": "properties/prop1.html",
+      "locationImg": "/properties/prop1/location.png",
       "imgs": [
         "/properties/prop1/0.png",
         "/properties/prop1/1.png",
@@ -17,7 +18,7 @@
         "/properties/prop1/3.png"
       ],
       "postcodeArea": "SE10",
-      "added": {"month": "October", "day": 12, "year": 2022}
+      "added": {"month": "October", "day": 12, "year": 2023}
     },
     {
       "id": "prop2",
@@ -28,14 +29,18 @@
       "description": "Modern two-bedroom apartment in the bustling area of Shoreditch. Features an open-plan living space, stylish interior, and close proximity to trendy bars and restaurants.",
       "location": "Shoreditch, London E1",
       "picture": "/properties/prop2/0.png",
+      "locationImg": "/properties/prop2/location.png",
       "imgs": [
         "/properties/prop2/0.png",
-        "/properties/prop1/1.png",
-        "/properties/prop1/2.png",
-        "/properties/prop1/3.png"
+        "/properties/prop2/1.png",
+        "/properties/prop2/2.png",
+        "/properties/prop2/3.png",
+        "/properties/prop2/4.png",
+        "/properties/prop2/5.png",
+        "/properties/prop2/6.png"
       ],
       "postcodeArea": "E1",
-      "added": {"month": "September", "day": 14, "year": 2022}
+      "added": {"month": "September", "day": 14, "year": 2023}
     },
     {
       "id": "prop3",
@@ -46,14 +51,16 @@
       "description": "Chic two-bedroom flat located in the heart of Camden. Perfect for those who enjoy vibrant city living, with easy access to local markets, music venues, and eclectic dining.",
       "location": "Camden, London NW1",
       "picture": "/properties/prop3/0.png",
+      "locationImg": "/properties/prop3/location.png",
       "imgs": [
         "/properties/prop3/0.png",
         "/properties/prop1/1.png",
         "/properties/prop1/2.png",
-        "/properties/prop1/3.png"
+        "/properties/prop1/3.png",
+        "/properties/prop1/4.png"
       ],
       "postcodeArea": "NW1",
-      "added": {"month": "September", "day": 14, "year": 2022}
+      "added": {"month": "September", "day": 14, "year": 2023}
     },
     {
       "id": "prop4",
@@ -64,14 +71,16 @@
       "description": "Elegant two-bedroom flat in Kensington. Offers luxurious living with a contemporary design, a balcony with views, and is located near world-renowned shops and museums.",
       "location": "Kensington, London W8",
       "picture": "/properties/prop4/0.png",
+      "locationImg": "/properties/prop4/location.png",
       "imgs": [
         "/properties/prop4/0.png",
-        "/properties/prop1/1.png",
-        "/properties/prop1/2.png",
-        "/properties/prop1/3.png"
+        "/properties/prop4/1.png",
+        "/properties/prop4/2.png",
+        "/properties/prop4/3.png",
+        "/properties/prop4/4.png"
       ],
       "postcodeArea": "W8",
-      "added": {"month": "September", "day": 14, "year": 2022}
+      "added": {"month": "September", "day": 14, "year": 2023}
     },
     {
       "id": "prop5",
@@ -81,33 +90,37 @@
       "tenure": "Freehold",
       "description": "Contemporary two-bedroom flat in the heart of Notting Hill. Features a sleek design, natural light, and is just steps away from famous markets and colorful townhouses.",
       "location": "Notting Hill, London W11",
-      "picture": "/properties/prop4/0.png",
+      "picture": "/properties/prop5/0.png",
+      "locationImg": "/properties/prop5/location.png",
       "imgs": [
-        "/properties/prop4/0.png",
-        "/properties/prop1/1.png",
-        "/properties/prop1/2.png",
-        "/properties/prop1/3.png"
+        "/properties/prop5/0.png",
+        "/properties/prop5/1.png",
+        "/properties/prop5/2.png",
+        "/properties/prop5/3.png",
+        "/properties/prop5/4.png"
       ],
       "postcodeArea": "W11",
-      "added": {"month": "September", "day": 14, "year": 2022}
+      "added": {"month": "September", "day": 30, "year": 2022}
     },
     {
       "id": "prop6",
       "type": "House",
       "bedrooms": 3,
       "price": 750000,
+      "picture": "/properties/prop6/0.png",
       "imgs": [
-        "/properties/prop4/0.png",
-        "/properties/prop1/1.png",
-        "/properties/prop1/2.png",
-        "/properties/prop1/3.png"
+        "/properties/prop6/0.png",
+        "/properties/prop6/1.png",
+        "/properties/prop6/2.png",
+        "/properties/prop6/3.png",
+        "/properties/prop6/4.png"
       ],
       "tenure": "Freehold",
       "description": "Classic Victorian three-bedroom house in Richmond. Offers spacious rooms, a beautiful garden, and is close to the Thames, parks, and historic sites.",
       "location": "Richmond, London TW10",
-      "picture": "/properties/prop4/0.png",
+      "locationImg": "/properties/prop6/location.png",
       "postcodeArea": "TW10",
-      "added": {"month": "October", "day": 12, "year": 2022}
+      "added": {"month": "August", "day": 21, "year": 2023}
     },
     {
       "id": "prop7",
@@ -117,13 +130,15 @@
       "tenure": "Freehold",
       "description": "Cozy two-bedroom cottage in Hampstead. Features charming details, a fireplace, and a lovely garden. Nestled in a quiet neighborhood, yet close to the city center.",
       "location": "Hampstead, London NW3",
+      "locationImg": "/properties/prop7/location.png",
       "imgs": [
-        "/properties/prop4/0.png",
-        "/properties/prop1/1.png",
-        "/properties/prop1/2.png",
-        "/properties/prop1/3.png"
+        "/properties/prop7/0.png",
+        "/properties/prop7/1.png",
+        "/properties/prop7/2.png",
+        "/properties/prop7/3.png",
+        "/properties/prop7/4.png"
       ],
-      "picture": "/properties/prop4/0.png",
+      "picture": "/properties/prop7/0.png",
       "postcodeArea": "NW3",
       "added": {"month": "October", "day": 12, "year": 2022}
     }

@@ -1,14 +1,14 @@
 import {useState, useEffect, useRef} from 'react';
-import { useParams } from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {CottageImage} from "./CottageImage.jsx";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
-import "./propertydetail.css";
+import "../styles/propertydetail.css";
 import {OneImageCarousel} from "./OneImageCarousel.jsx";
 
 const PropertyDetail = () => {
-    const { propertyId } = useParams();
+    const {propertyId} = useParams();
     const [property, setProperty] = useState(null);
     const [activeImageIndex, setActiveImageIndex] = useState(0);
     const containerRef = useRef(null);
@@ -78,25 +78,33 @@ const PropertyDetail = () => {
                         ))}
                     </div>
                     <div className={"slide left"} onClick={handleLeftClick}>
-                        <ChevronLeftIcon style={{ color: 'black' }} />
+                        <ChevronLeftIcon style={{color: 'black'}}/>
                     </div>
                     <div className={"slide right"} onClick={handleRightClick}>
-                        <ChevronRightIcon style={{ color: 'black' }} />
+                        <ChevronRightIcon style={{color: 'black'}}/>
                     </div>
                     <div className={"btm-sliders"}>
                         {property.imgs.map((_, index) => (
                             <span
                                 key={`scroll${index + 1}`}
                                 onClick={() => scrollToImage(index)}
-                                style={{ backgroundColor: activeImageIndex === index ? 'white' : '' }} // Highlight the active image
+                                style={{backgroundColor: activeImageIndex === index ? 'white' : ''}} // Highlight the active image
                             />
                         ))}
                     </div>
                 </div>
             )}
-
-            <h1>{property.type}</h1>
-            <p>{property.description}</p>
+            <div className={'property-detail-div'}>
+                <h1>{property.type}</h1>
+                <div className={'property-detail-description'}>
+                    <p>{property.description}</p>
+                </div>
+                <div className={'location-div'}>
+                <img style={{
+                    maxWidth: "500px",
+                }} src={property.locationImg} alt={"location-img"}/>
+                </div>
+            </div>
         </div>
     );
 };

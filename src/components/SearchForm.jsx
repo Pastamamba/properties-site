@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {useState} from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -17,7 +17,12 @@ export const SearchForm = ({onSearch}) => {
 
     // Function to convert string to date object or null
     const stringToDate = (dateString) => {
-        return dateString ? dayjs(dateString).toDate() : null;
+        try {
+            return dateString ? dayjs(dateString).toDate() : null;
+        } catch (error) {
+            console.error("Invalid date string:", dateString);
+            return null;
+        }
     };
 
     const clearField = (setter) => {
@@ -57,6 +62,8 @@ export const SearchForm = ({onSearch}) => {
     const [dateAddedEnd, setDateAddedEnd] = useState(queryParams.dateAddedEnd);
     const [postcodeArea, setPostcodeArea] = useState(queryParams.postcodeArea);
 
+    const [isFilterVisible, setIsFilterVisible] = useState(false);
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const criteria = {
@@ -65,8 +72,8 @@ export const SearchForm = ({onSearch}) => {
             maxPrice,
             minBedrooms,
             maxBedrooms,
-            dateAdded: dateAdded ? dayjs(dateAdded).format() : '',
-            dateAddedEnd: dateAddedEnd ? dayjs(dateAddedEnd).format() : '',
+            dateAdded: dateAdded ? dayjs(dateAdded).format('YYYY-MM-DD') : '',
+            dateAddedEnd: dateAddedEnd ? dayjs(dateAddedEnd).format('YYYY-MM-DD') : '',
             postcodeArea
         };
         onSearch(criteria);
@@ -74,126 +81,198 @@ export const SearchForm = ({onSearch}) => {
         // Update URL with new query parameters
         const searchParams = new URLSearchParams(criteria).toString();
         navigate(`/?${searchParams}`);
+
+        setIsFilterVisible(false);
     };
 
-    const numberInputStyle = {
-        'MozAppearance': 'textfield',
-        '&::-webkit-outer-spin-button': {'-webkit-appearance': 'none', margin: 0},
-        '&::-webkit-inner-spin-button': {'-webkit-appearance': 'none', margin: 0},
-    };
+    const divStyle = !isFilterVisible ? {
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        display: "flex"
+    } : {}
 
     return (
-        <form onSubmit={handleSubmit}>
-            <Grid sx={{margin: "1em"}} container>
-                <Grid>
-                    <Grid item xs={12}>
-                        <Typography variant="h6">General</Typography>
-                    </Grid>
-                    <Grid>
-                        <TextField
-                            label="Property Type"
-                            value={type}
-                            onChange={(e) => setType(e.target.value)}
-                            margin="normal"
-                            sx={numberInputStyle}
-                            autoComplete="off"
-                            variant="outlined"
-                        />
-                        <TextField
-                            label="Postcode Area"
-                            autoComplete="off"
-                            value={postcodeArea}
-                            onChange={(e) => setPostcodeArea(e.target.value)}
-                            margin="normal"
-                            variant="outlined"
-                        />
-                    </Grid>
-                    <Grid>
-                        <TextField
-                            label="Min Price"
-                            type="number"
-                            sx={numberInputStyle}
-                            value={minPrice}
-                            onChange={(e) => handleNumericChange(e, setMinPrice)}
-                            margin="normal"
-                            variant="outlined"
-                            autoComplete="off"
-                            InputProps={{
-                                endAdornment: minPrice && (
-                                    <InputAdornment position="end">
-                                        <IconButton onClick={() => clearField(setMinPrice)}>
-                                            <ClearIcon/>
-                                        </IconButton>
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-                        <TextField
-                            label="Max Price"
-                            type="number"
-                            autoComplete="off"
-                            value={maxPrice}
-                            onChange={(e) => setMaxPrice(e.target.value)}
-                            margin="normal"
-                            variant="outlined"
-                        />
-                    </Grid>
+        <div style={divStyle}>
+            {isFilterVisible && (
+                <form onSubmit={handleSubmit}>
+                    <Grid sx={{margin: "1em"}} container>
+                        <Grid container spacing={1}>
+                            <Grid item xs={4}>
+                                <Grid>
+                                    <Grid item xs={6}>
+                                        <Typography variant="h6">General</Typography>
+                                    </Grid>
+                                    <Grid>
+                                        <TextField
+                                            label="Property Type"
+                                            value={type}
+                                            onChange={(e) => setType(e.target.value)}
+                                            margin="normal"
+                                            sx={{
+                                                width: {md: 200},
+                                                "& .MuiInputBase-root": {
+                                                    height: 50
+                                                },
+                                                mr: 1
+                                            }}
+                                            autoComplete="off"
+                                            variant="outlined"
+                                        />
+                                        <TextField
+                                            label="Postcode Area"
+                                            autoComplete="off"
+                                            value={postcodeArea}
+                                            sx={{
+                                                width: {md: 200},
+                                                "& .MuiInputBase-root": {
+                                                    height: 50
+                                                },
+                                                mr: 1
+                                            }}
+                                            onChange={(e) => setPostcodeArea(e.target.value)}
+                                            margin="normal"
+                                            variant="outlined"
+                                        />
+                                    </Grid>
+                                </Grid>
+                                <Grid>
+                                    <TextField
+                                        label="Min Price"
+                                        type="number"
+                                        sx={{
+                                            width: {md: 200},
+                                            "& .MuiInputBase-root": {
+                                                height: 50
+                                            },
+                                            mr: 1
+                                        }}
+                                        value={minPrice}
+                                        onChange={(e) => handleNumericChange(e, setMinPrice)}
+                                        margin="normal"
+                                        variant="outlined"
+                                        autoComplete="off"
+                                        InputProps={{
+                                            endAdornment: minPrice && (
+                                                <InputAdornment position="end">
+                                                    <IconButton onClick={() => clearField(setMinPrice)}>
+                                                        <ClearIcon/>
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            ),
+                                        }}
+                                    />
+                                    <TextField
+                                        label="Max Price"
+                                        type="number"
+                                        autoComplete="off"
+                                        sx={{
+                                            width: {md: 200},
+                                            "& .MuiInputBase-root": {
+                                                height: 50
+                                            },
+                                            mr: 1
+                                        }}
+                                        value={maxPrice}
+                                        onChange={(e) => setMaxPrice(e.target.value)}
+                                        margin="normal"
+                                        variant="outlined"
+                                    />
+                                </Grid>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Grid item xs={6}>
+                                    <Typography variant="h6">Bedrooms</Typography>
+                                </Grid>
+                                <TextField
+                                    label="Min Bedrooms"
+                                    type="number"
+                                    sx={{
+                                        width: {md: 200},
+                                        "& .MuiInputBase-root": {
+                                            height: 50
+                                        },
+                                        mr: 1
+                                    }}
+                                    autoComplete="off"
+                                    value={minBedrooms}
+                                    onChange={(e) => setMinBedrooms(e.target.value)}
+                                    margin="normal"
+                                    variant="outlined"
+                                />
+                                <TextField
+                                    label="Max Bedrooms"
+                                    type="number"
+                                    autoComplete="off"
+                                    sx={{
+                                        width: {md: 200},
+                                        "& .MuiInputBase-root": {
+                                            height: 50
+                                        },
+                                        mr: 1
+                                    }}
+                                    value={maxBedrooms}
+                                    onChange={(e) => setMaxBedrooms(e.target.value)}
+                                    margin="normal"
+                                    variant="outlined"
+                                />
+                            </Grid>
 
-                    <Grid>
-                        <Grid item xs={6}>
-                            <Typography variant="h6">Bedrooms</Typography>
+
+                            <Grid item xs={4}>
+                                <Grid item xs={6}>
+                                    <Typography variant="h6">Other</Typography>
+                                </Grid>
+                                <Grid>
+                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                        <DatePicker
+                                            label="Date Added (From)"
+                                            sx={{
+                                                width: {md: 200},
+                                                "& .MuiInputBase-root": {
+                                                    height: 50
+                                                },
+                                                mr: 1,
+                                                mt: 1,
+                                            }}
+                                            value={dateAdded}
+                                            onChange={setDateAdded}
+                                            renderInput={(params) => <TextField {...params} />}
+                                        />
+                                        <DatePicker
+                                            label="Date Added (To)"
+                                            value={dateAddedEnd}
+                                            onChange={setDateAddedEnd}
+                                            sx={{
+                                                width: {md: 200},
+                                                "& .MuiInputBase-root": {
+                                                    height: 50
+                                                },
+                                                mr: 1,
+                                                mt: 1
+                                            }}
+                                            renderInput={(params) => <TextField {...params} />}
+                                        />
+                                    </LocalizationProvider>
+                                </Grid>
+                            </Grid>
                         </Grid>
-                        <br/>
-                        <TextField
-                            label="Min Bedrooms"
-                            type="number"
-                            autoComplete="off"
-                            value={minBedrooms}
-                            onChange={(e) => setMinBedrooms(e.target.value)}
-                            margin="normal"
-                            variant="outlined"
-                        />
-                        <TextField
-                            label="Max Bedrooms"
-                            type="number"
-                            autoComplete="off"
-                            value={maxBedrooms}
-                            onChange={(e) => setMaxBedrooms(e.target.value)}
-                            margin="normal"
-                            variant="outlined"
-                        />
-                    </Grid>
-                </Grid>
 
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <Typography variant="h6">Other</Typography>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DatePicker
-                                label="Date Added (From)"
-                                sx={{margin: "0.5em"}}
-                                value={dateAdded}
-                                onChange={setDateAdded}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                            <DatePicker
-                                label="Date Added (To)"
-                                sx={{margin: "0.5em"}}
-                                value={dateAddedEnd}
-                                onChange={setDateAddedEnd}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </LocalizationProvider>
-                    </Grid>
-                </Grid>
+                        <Button sx={{marginTop: "20px"}} type="submit" variant="contained" color="primary">
+                            Search
+                        </Button>
 
-                <Button sx={{marginTop: "20px"}} type="submit" variant="contained" color="primary">
-                    Search
-                </Button>
-
-            </Grid>
-        </form>
+                    </Grid>
+                </form>
+            )}
+            <Button
+                variant="outlined"
+                color="primary"
+                onClick={() => setIsFilterVisible(!isFilterVisible)}
+                style={{marginBottom: '10px', marginTop: "10px"}}
+            >
+                {isFilterVisible ? 'Hide Filter' : 'Filter'}
+            </Button>
+        </div>
     );
 };

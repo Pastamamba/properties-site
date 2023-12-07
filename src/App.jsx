@@ -1,10 +1,22 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import PropertyDetail from "./components/PropertyDetail.jsx";
 import Navbar from "./components/Navbar.jsx";
 import {ThemeProvider} from "@mui/material";
-import BasicTheme from "./components/BasicTheme.js";
+import BasicTheme from "./styles/themes/BasicTheme.js";
 import {useEffect, useState} from "react";
+import Footer from "./components/Footer.jsx";
+import styled from "styled-components";
+
+const AppWrapper = styled('div')({
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+});
+
+const Content = styled('div')({
+    flex: 1,
+});
 
 export const App = () => {
     const [favourites, setFavourites] = useState([]);
@@ -26,14 +38,20 @@ export const App = () => {
     };
 
     return (
-        <ThemeProvider theme={BasicTheme}>
-        <Router>
-            <Navbar favourites={favourites} toggleFavorite={toggleFavorite} />
-            <Routes>
-                <Route exact path="/" element={<Home favourites={favourites} toggleFavorite={toggleFavorite} />} />
-                <Route path="/property/:propertyId" element={<PropertyDetail />} />
-            </Routes>
-        </Router>
-        </ThemeProvider>
+        <AppWrapper>
+            <ThemeProvider theme={BasicTheme}>
+                <Router>
+                    <Navbar favourites={favourites} toggleFavorite={toggleFavorite}/>
+                    <Content>
+                        <Routes>
+                            <Route exact path="/"
+                                   element={<Home favourites={favourites} toggleFavorite={toggleFavorite}/>}/>
+                            <Route path="/property/:propertyId" element={<PropertyDetail/>}/>
+                        </Routes>
+                    </Content>
+                    <Footer/>
+                </Router>
+            </ThemeProvider>
+        </AppWrapper>
     );
 };
