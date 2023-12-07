@@ -284,6 +284,13 @@
     padding: 50px 8%;
 }
 
+.property-rooms {
+    border-top: 1px solid rgb(220, 220, 220);
+    border-bottom: 1px solid rgb(220, 220, 220);
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+}
+
 .location-div {
     width: 100%;
     display: flex;

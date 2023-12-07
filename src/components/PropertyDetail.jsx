@@ -3,9 +3,12 @@ import {useParams} from 'react-router-dom';
 import {CottageImage} from "./CottageImage.jsx";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import BedIcon from '@mui/icons-material/Bed';
+import ShowerIcon from '@mui/icons-material/Shower';
 
 import "../styles/propertydetail.css";
 import {OneImageCarousel} from "./OneImageCarousel.jsx";
+import {Grid} from "@mui/material";
 
 const PropertyDetail = () => {
     const {propertyId} = useParams();
@@ -100,6 +103,18 @@ const PropertyDetail = () => {
             )}
             <div className={'property-detail-div'}>
                 <h1>{property.type}</h1>
+
+                <div className={"property-rooms"}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={2} md={2} sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                            <ShowerIcon sx={{mr: 2}}/> {property.bathrooms}
+                        </Grid>
+                        <Grid item xs={2} md={2} sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                            <BedIcon sx={{mr: 2}}/> {property.bedrooms}
+                        </Grid>
+                    </Grid>
+                </div>
+
                 <div className={'property-detail-description'}>
                     <p>{property.description}</p>
                 </div>
