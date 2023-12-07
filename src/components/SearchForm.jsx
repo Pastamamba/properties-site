@@ -15,10 +15,10 @@ export const SearchForm = ({onSearch}) => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    // Function to convert string to date object or null
     const stringToDate = (dateString) => {
         try {
-            return dateString ? dayjs(dateString).toDate() : null;
+            const date = dayjs(dateString);
+            return date.isValid() ? date.toDate() : null;
         } catch (error) {
             console.error("Invalid date string:", dateString);
             return null;
@@ -45,8 +45,8 @@ export const SearchForm = ({onSearch}) => {
             maxPrice: searchParams.get('maxPrice') || '',
             minBedrooms: searchParams.get('minBedrooms') || '',
             maxBedrooms: searchParams.get('maxBedrooms') || '',
-            dateAdded: stringToDate(searchParams.get('dateAdded')),
-            dateAddedEnd: stringToDate(searchParams.get('dateAddedEnd')),
+            dateAdded: searchParams.get('dateAdded') ? dayjs(searchParams.get('dateAdded')) : null,
+            dateAddedEnd: searchParams.get('dateAddedEnd') ? dayjs(searchParams.get('dateAddedEnd')) : null,
             postcodeArea: searchParams.get('postcodeArea') || ''
         };
     };
@@ -63,7 +63,7 @@ export const SearchForm = ({onSearch}) => {
     const [postcodeArea, setPostcodeArea] = useState(queryParams.postcodeArea);
 
     const [isFilterVisible, setIsFilterVisible] = useState(false);
-
+    console.log("DATEADDED: ", dateAdded);
     const handleSubmit = (event) => {
         event.preventDefault();
         const criteria = {
@@ -235,13 +235,13 @@ export const SearchForm = ({onSearch}) => {
                                                 mr: 1,
                                                 mt: 1,
                                             }}
-                                            value={dateAdded}
+                                            value={dateAdded || null}
                                             onChange={setDateAdded}
                                             renderInput={(params) => <TextField {...params} />}
                                         />
                                         <DatePicker
                                             label="Date Added (To)"
-                                            value={dateAddedEnd}
+                                            value={dateAddedEnd || null}
                                             onChange={setDateAddedEnd}
                                             sx={{
                                                 width: {md: 200},

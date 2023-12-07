@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import StarIcon from '@mui/icons-material/Star';
-import '../styles/navbar.css';
+import '../../styles/navbar.css';
 import IconButton from "@mui/material/IconButton";
 import {MenuItem, Menu} from "@mui/material";
 
@@ -12,7 +12,7 @@ const Navbar = ({ favourites, toggleFavorite }) => {
 
     useEffect(() => {
         const loadProperties = async () => {
-            const propertiesData = await import('../properties/properties.json');
+            const propertiesData = await import('../../properties/properties.json');
             const filteredProperties = propertiesData.properties.filter(property => favourites.includes(property.id));
             setFavoriteProperties(filteredProperties);
         };

@@ -1,19 +1,3 @@
-.mokit-card {
-    min-width: 12rem;
-    max-width: 25rem;
-    margin-bottom: 1em;
-    margin-right: 1em;
-}
-
-.mokit-body {
-    z-index: 1;
-}
-
-.mokit-body:hover {
-    cursor: pointer;
-    background: #eeeeee;
-}
-
 .card-content {
     font-size: .75em;
     margin: 0.2em 0 0;
@@ -173,98 +157,6 @@
     background: white;
 }
 
-.mokki-info-text {
-    margin-left: 0 !important;
-}
-
-.equipment {
-    border-top: 1px solid #dcdcdc;
-    padding: 1.5em 0;
-    margin-top: 1.5em;
-    margin-left: 0 !important;
-}
-
-.equipment .h1 {
-    font-size: 1.4375em;
-    margin-bottom: 1.5em;
-    font-family: futura-pt,sans-serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.equipment-row {
-    font-size: .875em;
-    font-family: futura-pt,sans-serif;
-    min-width: 250px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.equipment-elements {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    font-size: .875em;
-    margin-bottom: 2em;
-}
-
-.equipment-elements span {
-    width: 6.25rem;
-    height: 6.25rem;
-    background: #e3e3e3 50% no-repeat;
-    color: #183153;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1.5em;
-}
-
-.equipment-elements svg {
-    width: 3em;
-    height: 3em;
-}
-
-.equipment-elements h2 {
-    font-size: 1em;
-    margin-bottom: 0.8em;
-    font-weight: 500;
-    font-family: futura-pt,sans-serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.equipment-elements p {
-    margin-top: 0.2em;
-    margin-bottom: 0.3em;
-    font-size: .75em;
-}
-
-.show-all {
-    bottom: 1.5em;
-    left: 1.5em;
-    position: absolute;
-    color: #fff;
-    font-size: .875em;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    padding-left: 1.25em;
-    min-height: 1.375rem;
-    line-height: 1.375rem;
-    font-family: futura-pt,sans-serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    display: block !important;
-}
-
-.mokit-card .slide-show-wrapper {
-    position: relative;
-    overflow: hidden;
-    height: 300px;
-}
-
 .slide .fas {
     position: absolute;
     top: 50%;
@@ -325,19 +217,6 @@
         flex-wrap: nowrap;
     }
 
-    .images img {
-
-    }
-
-    .equipment-row {
-        margin-bottom: 0;
-
-    }
-
-    .equipment {
-        padding: 0 0;
-    }
-
     .images-content .slide {
         opacity: 1;
     }
@@ -375,37 +254,6 @@
     }
 }
 
-@media (max-width: 475px) {
-
-    .mokit-card .slide-show-wrapper {
-        max-height: 275px;
-        min-height: 275px;
-    }
-}
-
-@media (max-width: 450px) {
-
-    .mokit-card .slide-show-wrapper {
-        max-height: 250px;
-        min-height: 250px;
-    }
-}
-
-@media (max-width: 390px) {
-
-    .mokit-card .slide-show-wrapper {
-        max-height: 224px;
-        min-height: 224px;
-    }
-}
-
-@media (max-width: 330px) {
-
-    .mokit-card .slide-show-wrapper {
-        max-height: 200px;
-        min-height: 200px;
-    }
-}
 
 @media only screen and (max-width: 370px) {
 
@@ -421,21 +269,5 @@
 
     .images {
         max-height: 280px;
-    }
-}
-
-@media (max-width: 310px) {
-
-    .mokit-card .slide-show-wrapper {
-        max-height: 180px;
-        min-height: 180px;
-    }
-}
-
-@media (max-width: 290px) {
-
-    .mokit-card .slide-show-wrapper {
-        max-height: 170px;
-        min-height: 170px;
     }
 }

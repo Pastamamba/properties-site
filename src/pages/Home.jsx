@@ -1,18 +1,24 @@
-import {useState, useEffect, useCallback} from 'react';
-import {SearchForm} from "../components/SearchForm.jsx";
-import ResultsList from "../components/ResultsList.jsx";
-import Typography from "@mui/material/Typography";
+import React, { useState, useEffect, useCallback } from 'react';
+import { SearchForm } from '../components/SearchForm.jsx';
+import ResultsList from '../components/ResultsList.jsx';
+import Typography from '@mui/material/Typography';
 
-const Home = ({favourites, toggleFavorite}) => {
+const Home = ({ favourites, toggleFavorite }) => {
     const [properties, setProperties] = useState([]);
     const [filteredProperties, setFilteredProperties] = useState([]);
+
+    // Function to convert a date object to milliseconds
     const convertDateToMillis = (dateObj) => {
-        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June', 'July',
+            'August', 'September', 'October', 'November', 'December'
+        ];
         const monthNumber = monthNames.indexOf(dateObj.month) + 1;
         const dateString = `${dateObj.year}-${String(monthNumber).padStart(2, '0')}-${String(dateObj.day).padStart(2, '0')}`;
         return new Date(dateString).getTime();
     };
 
+    // Load properties data from a JSON file when the component mounts
     useEffect(() => {
         const loadProperties = async () => {
             const propertiesData = await import('../properties/properties.json');
@@ -26,6 +32,7 @@ const Home = ({favourites, toggleFavorite}) => {
         loadProperties();
     }, []);
 
+    // Callback function to handle property search based on criteria
     const handleSearch = useCallback((criteria) => {
         // Convert search criteria dates to milliseconds
         const dateAddedStartMillis = criteria.dateAdded ? new Date(criteria.dateAdded).getTime() : null;
@@ -63,8 +70,9 @@ const Home = ({favourites, toggleFavorite}) => {
         });
 
         setFilteredProperties(results);
-    });
+    }, [properties]);
 
+    // Initialize property search with URL parameters when the component mounts
     useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search);
         const criteria = {
@@ -82,12 +90,16 @@ const Home = ({favourites, toggleFavorite}) => {
 
     return (
         <>
-            <SearchForm onSearch={handleSearch}/>
-            <Typography variant="h6" style={{margin: '20px 0'}}>
+            {/* Display the search form */}
+            <SearchForm onSearch={handleSearch} />
+
+            {/* Display search results count */}
+            <Typography variant="h6" style={{ margin: '20px 0' }}>
                 Search Results: {filteredProperties.length}
             </Typography>
-            <ResultsList properties={filteredProperties} favourites={favourites}
-                         toggleFavorite={toggleFavorite}/>
+
+            {/* Display the list of filtered properties */}
+            <ResultsList properties={filteredProperties} favourites={favourites} toggleFavorite={toggleFavorite} />
         </>
     );
 };

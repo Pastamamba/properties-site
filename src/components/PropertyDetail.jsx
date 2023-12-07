@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 import {useParams} from 'react-router-dom';
-import {CottageImage} from "./CottageImage.jsx";
+import {CottageImage} from "../styles/styledComponents/CottageImage.jsx";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import BedIcon from '@mui/icons-material/Bed';

@@ -1,11 +1,11 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import PropertyDetail from "./components/PropertyDetail.jsx";
-import Navbar from "./components/Navbar.jsx";
+import Navbar from "./components/general/Navbar.jsx";
 import {ThemeProvider} from "@mui/material";
 import BasicTheme from "./styles/themes/BasicTheme.js";
 import {useEffect, useState} from "react";
-import Footer from "./components/Footer.jsx";
+import Footer from "./components/general/Footer.jsx";
 import styled from "styled-components";
 
 const AppWrapper = styled('div')({
