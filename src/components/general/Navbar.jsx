@@ -19,6 +19,7 @@ const Navbar = ({favourites, toggleFavorite}) => {
 
     // State for handling the responsive side menu's visibility.
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [propertiesLoaded, setPropertiesLoaded] = useState(false);
 
     // Using React Router's `useNavigate` for navigation.
     const navigate = useNavigate();
@@ -201,7 +202,10 @@ const Navbar = ({favourites, toggleFavorite}) => {
                 >
                     {favoriteProperties.length > 0 ? (
                         favoriteProperties.map(property => (
-                            <MenuItem key={property.id} onClick={() => navigateToProperty(property.id)}>
+                            <MenuItem key={property.id} onClick={() => {
+                                navigateToProperty(property.id);
+                                setAnchorElFav(false)
+                            }}>
                                 <div className="favorite-item-content">
                                     <img src={property.picture} alt={property.type} className="favorite-image"/>
                                     <div className="favorite-info">
