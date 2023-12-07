@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 const Home = ({favourites, toggleFavorite}) => {
     const [properties, setProperties] = useState([]);
     const [filteredProperties, setFilteredProperties] = useState([]);
-    const [showResults, setShowResults] = useState(false);
     const convertDateToMillis = (dateObj) => {
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         const monthNumber = monthNames.indexOf(dateObj.month) + 1;
