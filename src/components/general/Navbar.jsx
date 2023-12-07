@@ -1,62 +1,203 @@
 import {useState, useEffect} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import StarIcon from '@mui/icons-material/Star';
-import '../../styles/navbar.css';
 import IconButton from "@mui/material/IconButton";
 import {MenuItem, Menu} from "@mui/material";
+import '../../styles/navbar.css';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import MenuIcon from '@mui/icons-material/Menu';
 
-const Navbar = ({ favourites, toggleFavorite }) => {
-    const [anchorEl, setAnchorEl] = useState(null);
+const Navbar = ({favourites, toggleFavorite}) => {
+    // State for handling menu and favorite properties dropdown.
+    const [anchorElFav, setAnchorElFav] = useState(null);
+    const [anchorElProps, setAnchorElProps] = useState(null);
     const [favoriteProperties, setFavoriteProperties] = useState([]);
+    const [allProperties, setAllProperties] = useState([]);
+
+    const [showPropertiesInMenu, setShowPropertiesInMenu] = useState(false);
+    const [showFavoritesInMenu, setShowFavoritesInMenu] = useState(false);
+
+    // State for handling the responsive side menu's visibility.
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // Using React Router's `useNavigate` for navigation.
     const navigate = useNavigate();
 
+    // Effect for loading properties and favorites when the component mounts or favorites change.
     useEffect(() => {
-        const loadProperties = async () => {
+        // Async function to load all properties.
+        const loadAllProperties = async () => {
             const propertiesData = await import('../../properties/properties.json');
-            const filteredProperties = propertiesData.properties.filter(property => favourites.includes(property.id));
+            setAllProperties(propertiesData.properties);
+        };
+
+        // Function to load favorite properties based on the 'favourites' prop.
+        const loadFavoriteProperties = () => {
+            const filteredProperties = allProperties.filter(property => favourites.includes(property.id));
             setFavoriteProperties(filteredProperties);
         };
 
-        loadProperties();
+        loadAllProperties().then(loadFavoriteProperties);
     }, [favourites]);
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
+    // Handlers for opening and closing menus.
+    const handleFavoritesClick = (event) => {
+        setAnchorElFav(event.currentTarget);
     };
 
-    const handleClose = () => {
-        setAnchorEl(null);
+    const handlePropertiesClick = (event) => {
+        setAnchorElProps(event.currentTarget);
     };
 
+    const handleCloseFav = () => {
+        setAnchorElFav(null);
+    };
+
+    const handleCloseProps = () => {
+        setAnchorElProps(null);
+    };
+
+    // Function to navigate to a specific property.
     const navigateToProperty = (id) => {
-        handleClose();
         navigate(`/property/${id}`);
+        handleCloseProps();
     };
 
+    // Function to handle adding/removing favorites.
     const handleToggleFavorite = (propertyId, event) => {
         event.stopPropagation();
         toggleFavorite(propertyId);
     };
 
+    // Function to toggle the visibility of the responsive side menu.
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
         <nav className="navbar">
+            {/* Logo section that navigates to the home page */}
             <div className="navbar-logo">
                 <Link to="/">
-                    <img alt={"logo-image"} src={"/PropertyLogo.PNG"} className={'logo'}/>
+                    <img alt="Logo" src="/PropertyLogo.PNG" className="logo"/>
                 </Link>
             </div>
-            <h2 style={{color: "white"}}>Properties</h2>
-            <div className="navbar-favourites">
-                <IconButton sx={{fontSize: "15px"}} onClick={handleClick} size="large" color="inherit">
+
+            <IconButton className="menu-button" onClick={toggleMenu}>
+                <span className={'menu-button'}>
+                <MenuIcon/>
+                    </span>
+            </IconButton>
+            <div className={`side-menu ${isMenuOpen ? 'open' : ''}`}>
+                <div className="menu-overlay" onClick={() => setIsMenuOpen(false)}></div>
+                <KeyboardArrowRightIcon
+                    onClick={() => {setIsMenuOpen(false)}}
+                    sx={{
+                        float: "right",
+                        padding: "1em",
+                        '&:hover': {
+                            color: 'grey',
+                            cursor: "pointer"
+                        }}}
+                />
+                <div className={'nav-list-links'}>
+                <Link onClick={() => {
+                    setIsMenuOpen(false)
+                }} to="/">Home</Link>
+                <Link onClick={() => {
+                    setIsMenuOpen(false)
+                }} to="/contact">Contact</Link>
+
+                    <div style={{
+                        display: "block",
+                        padding: "10px",
+                        borderBottom: "1px solid #ccc",
+                        color: "black"
+                    }} onClick={() => setShowPropertiesInMenu(!showPropertiesInMenu)}>Properties</div>
+
+
+                    {showPropertiesInMenu && (
+                        <div className="menu-properties-list">
+                            {allProperties.map(property => (
+                                <MenuItem key={property.id} onClick={() => {
+                                    navigateToProperty(property.id);
+                                    setShowPropertiesInMenu(false);
+                                    setIsMenuOpen(false);
+                                }}>{property.type} - {property.location}</MenuItem>
+                            ))}
+                        </div>
+                    )}
+
+                    <div style={{
+                        display: "block",
+                        padding: "10px",
+                        borderBottom: "1px solid #ccc",
+                        color: "black"
+                    }} onClick={() => setShowFavoritesInMenu(!showFavoritesInMenu)}>Favorites</div>
+                    {showFavoritesInMenu && (
+                        <div className="menu-favorites-list">
+                            {favoriteProperties.length > 0 ?
+                                favoriteProperties.map(property => (
+                                    <MenuItem key={property.id} onClick={() => {
+                                        navigateToProperty(property.id);
+                                        setShowFavoritesInMenu(false);
+                                        setIsMenuOpen(false);
+                                    }}>{property.type} - {property.location}</MenuItem>
+                                ))
+                                : <p>No favorites</p>
+                            }
+                        </div>
+                    )}
+
+                </div>
+            </div>
+
+            {/* Navigation links, visible on larger screens */}
+            <div className="navbar-links">
+                <Link to="/">Home</Link>
+                <Link to="/contact">Contact</Link>
+                <IconButton sx={{
+                    color: "white",
+                    fontSize: "12px",
+                    padding: "10px 10px",
+                    '&:hover': {
+                        color: 'grey',
+                    }
+                }} onClick={handlePropertiesClick} color="inherit">
+                    Properties
+                </IconButton>
+                <Menu
+                    id="property-menu"
+                    anchorEl={anchorElProps}
+                    keepMounted
+                    open={Boolean(anchorElProps)}
+                    onClose={handleCloseProps}
+                >
+                    {allProperties.map((property) => (
+                        <MenuItem key={property.id} onClick={() => navigateToProperty(property.id)}>
+                            {property.type} - {property.location}
+                        </MenuItem>
+                    ))}
+                </Menu>
+
+                <IconButton sx={{
+                    color: "white",
+                    fontSize: "12px",
+                    padding: "10px 10px",
+                    '&:hover': {
+                        color: 'grey',
+                    },
+
+                }} onClick={handleFavoritesClick} color="inherit">
                     Favourites
-                    <StarIcon/>
+                    <StarIcon sx={{fontSize: "14px"}}/>
                 </IconButton>
                 <Menu
                     id="favorite-menu"
-                    anchorEl={anchorEl}
+                    anchorEl={anchorElFav}
                     keepMounted
-                    open={Boolean(anchorEl)}
-                    onClose={handleClose}
+                    open={Boolean(anchorElFav)}
+                    onClose={handleCloseFav}
                 >
                     {favoriteProperties.length > 0 ? (
                         favoriteProperties.map(property => (
@@ -65,7 +206,8 @@ const Navbar = ({ favourites, toggleFavorite }) => {
                                     <img src={property.picture} alt={property.type} className="favorite-image"/>
                                     <div className="favorite-info">
                                         {property.type} - {property.location}
-                                        <IconButton onClick={(e) => handleToggleFavorite(property.id, e)}>
+                                        <IconButton onClick={(e) => handleToggleFavorite(property.id, e)}
+                                                    color="inherit">
                                             <StarIcon/>
                                         </IconButton>
                                     </div>
@@ -73,9 +215,7 @@ const Navbar = ({ favourites, toggleFavorite }) => {
                             </MenuItem>
                         ))
                     ) : (
-                        <MenuItem>
-                            No added favourites
-                        </MenuItem>
+                        <MenuItem onClick={handleCloseFav}>No added favourites</MenuItem>
                     )}
                 </Menu>
             </div>

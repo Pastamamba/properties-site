@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CottageImage = styled.img`
+export const PropertyImage = styled.img`
   &::before {
     content: "";
     display: block;

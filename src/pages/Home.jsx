@@ -1,7 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { SearchForm } from '../components/SearchForm.jsx';
 import ResultsList from '../components/ResultsList.jsx';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import "../styles/home.css";
+
 
 const Home = ({ favourites, toggleFavorite }) => {
     const [properties, setProperties] = useState([]);
@@ -90,6 +93,15 @@ const Home = ({ favourites, toggleFavorite }) => {
 
     return (
         <>
+            <Box sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
+                <h2>Welcome to properties.com</h2>
+            </Box>
+
             {/* Display the search form */}
             <SearchForm onSearch={handleSearch} />
 

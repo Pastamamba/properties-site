@@ -11,19 +11,9 @@ import dayjs from 'dayjs';
 import Typography from "@mui/material/Typography";
 import {Grid} from "@mui/material";
 
-export const SearchForm = ({onSearch}) => {
+export const SearchForm = ({ onSearch }) => {
     const navigate = useNavigate();
     const location = useLocation();
-
-    const stringToDate = (dateString) => {
-        try {
-            const date = dayjs(dateString);
-            return date.isValid() ? date.toDate() : null;
-        } catch (error) {
-            console.error("Invalid date string:", dateString);
-            return null;
-        }
-    };
 
     const clearField = (setter) => {
         setter('');
@@ -63,7 +53,6 @@ export const SearchForm = ({onSearch}) => {
     const [postcodeArea, setPostcodeArea] = useState(queryParams.postcodeArea);
 
     const [isFilterVisible, setIsFilterVisible] = useState(false);
-    console.log("DATEADDED: ", dateAdded);
     const handleSubmit = (event) => {
         event.preventDefault();
         const criteria = {
