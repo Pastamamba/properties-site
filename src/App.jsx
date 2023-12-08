@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import PropertyDetail from "./components/PropertyDetail.jsx";
+import PropertyDetail from "./pages/PropertyDetail.jsx";
 import Navbar from "./components/general/Navbar.jsx";
 import { ThemeProvider } from "@mui/material";
 import BasicTheme from "./styles/themes/BasicTheme.js";
 import { useEffect, useState } from "react";
 import Footer from "./components/general/Footer.jsx";
 import styled from "styled-components";
-import { ContactForm } from "./components/ContactForm.jsx";
+import { ContactForm } from "./pages/ContactForm.jsx";
 
 // Create a styled component for the top-level container.
 const AppWrapper = styled('div')({

@@ -7,7 +7,7 @@ import BedIcon from '@mui/icons-material/Bed';
 import ShowerIcon from '@mui/icons-material/Shower';
 
 import "../styles/propertydetail.css";
-import { OneImageCarousel } from "./OneImageCarousel.jsx";
+import { OneImageCarousel } from "../components/OneImageCarousel.jsx";
 import { Grid } from "@mui/material";
 
 const PropertyDetail = () => {

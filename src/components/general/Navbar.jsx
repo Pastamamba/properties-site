@@ -1,27 +1,41 @@
+// React imports for state and effects.
 import {useState, useEffect} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import StarIcon from '@mui/icons-material/Star';
+
+// Material UI components and icons.
 import IconButton from "@mui/material/IconButton";
 import {MenuItem, Menu} from "@mui/material";
-import '../../styles/navbar.css';
+import StarIcon from '@mui/icons-material/Star';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import MenuIcon from '@mui/icons-material/Menu';
 
+// Stylesheet import.
+import '../../styles/navbar.css';
+
+/**
+ * Navbar component for property navigation.
+ * @param {Array} favourites - Array containing the favourite property IDs.
+ * @param {Function} toggleFavorite - Function to toggle a property as favorite.
+ */
+
 const Navbar = ({favourites, toggleFavorite}) => {
-    // State for handling menu and favorite properties dropdown.
+
+    // State variables for menu anchor elements.
     const [anchorElFav, setAnchorElFav] = useState(null);
     const [anchorElProps, setAnchorElProps] = useState(null);
+
+    // State variables for properties and favorite properties lists.
     const [favoriteProperties, setFavoriteProperties] = useState([]);
     const [allProperties, setAllProperties] = useState([]);
 
+    // State variables for controlling menu display.
     const [showPropertiesInMenu, setShowPropertiesInMenu] = useState(false);
     const [showFavoritesInMenu, setShowFavoritesInMenu] = useState(false);
 
-    // State for handling the responsive side menu's visibility.
+    // State variable for controlling the side menu's visibility.
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [propertiesLoaded, setPropertiesLoaded] = useState(false);
 
-    // Using React Router's `useNavigate` for navigation.
+    // Navigation hook from React Router.
     const navigate = useNavigate();
 
     // Effect for loading properties and favorites when the component mounts or favorites change.
@@ -33,8 +47,10 @@ const Navbar = ({favourites, toggleFavorite}) => {
         };
 
         // Function to load favorite properties based on the 'favourites' prop.
-        const loadFavoriteProperties = () => {
-            const filteredProperties = allProperties.filter(property => favourites.includes(property.id));
+        const loadFavoriteProperties = async () => {
+            const propertiesData = await import('../../properties/properties.json');
+            const properties = propertiesData.properties;
+            const filteredProperties = properties.filter(property => favourites.includes(property.id));
             setFavoriteProperties(filteredProperties);
         };
 
@@ -92,29 +108,33 @@ const Navbar = ({favourites, toggleFavorite}) => {
             <div className={`side-menu ${isMenuOpen ? 'open' : ''}`}>
                 <div className="menu-overlay" onClick={() => setIsMenuOpen(false)}></div>
                 <KeyboardArrowRightIcon
-                    onClick={() => {setIsMenuOpen(false)}}
+                    onClick={() => {
+                        setIsMenuOpen(false)
+                    }}
                     sx={{
                         float: "right",
                         padding: "1em",
                         '&:hover': {
                             color: 'grey',
                             cursor: "pointer"
-                        }}}
+                        }
+                    }}
                 />
                 <div className={'nav-list-links'}>
-                <Link onClick={() => {
-                    setIsMenuOpen(false)
-                }} to="/">Home</Link>
-                <Link onClick={() => {
-                    setIsMenuOpen(false)
-                }} to="/contact">Contact</Link>
+                    <Link onClick={() => {
+                        setIsMenuOpen(false)
+                    }} to="/">Home</Link>
+                    <Link onClick={() => {
+                        setIsMenuOpen(false)
+                    }} to="/contact">Contact</Link>
 
                     <div style={{
                         display: "block",
                         padding: "10px",
                         borderBottom: "1px solid #ccc",
                         color: "black"
-                    }} onClick={() => setShowPropertiesInMenu(!showPropertiesInMenu)}>Properties</div>
+                    }} onClick={() => setShowPropertiesInMenu(!showPropertiesInMenu)}>Properties
+                    </div>
 
 
                     {showPropertiesInMenu && (
@@ -134,7 +154,8 @@ const Navbar = ({favourites, toggleFavorite}) => {
                         padding: "10px",
                         borderBottom: "1px solid #ccc",
                         color: "black"
-                    }} onClick={() => setShowFavoritesInMenu(!showFavoritesInMenu)}>Favorites</div>
+                    }} onClick={() => setShowFavoritesInMenu(!showFavoritesInMenu)}>Favorites
+                    </div>
                     {showFavoritesInMenu && (
                         <div className="menu-favorites-list">
                             {favoriteProperties.length > 0 ?

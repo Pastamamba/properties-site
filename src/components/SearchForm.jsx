@@ -1,24 +1,27 @@
-import {useState} from 'react';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import ClearIcon from '@mui/icons-material/Clear';
-import {LocalizationProvider, DatePicker} from '@mui/x-date-pickers';
-import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
-import {useLocation, useNavigate} from "react-router-dom";
-import dayjs from 'dayjs';
-import Typography from "@mui/material/Typography";
-import {Grid} from "@mui/material";
+import {useState} from 'react'; // Import the 'useState' hook from React
+import TextField from '@mui/material/TextField'; // Import a text input field from Material-UI
+import Button from '@mui/material/Button'; // Import a button from Material-UI
+import InputAdornment from '@mui/material/InputAdornment'; // Import an input adornment from Material-UI
+import IconButton from '@mui/material/IconButton'; // Import an icon button from Material-UI
+import ClearIcon from '@mui/icons-material/Clear'; // Import the 'Clear' icon from Material-UI
+import {LocalizationProvider, DatePicker} from '@mui/x-date-pickers'; // Import date-related components from Material-UI X Date Pickers
+import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'; // Import the Day.js adapter for Material-UI X Date Pickers
+import {useLocation, useNavigate} from "react-router-dom"; // Import hooks for handling routing in React
+import dayjs from 'dayjs'; // Import the Day.js library for date manipulation
+import Typography from "@mui/material/Typography"; // Import a typography component from Material-UI
+import {Grid} from "@mui/material"; // Import a grid component from Material-UI
 
-export const SearchForm = ({ onSearch }) => {
-    const navigate = useNavigate();
-    const location = useLocation();
+// Define a functional component called 'SearchForm' that takes a 'onSearch' prop
+export const SearchForm = ({onSearch}) => {
+    const navigate = useNavigate(); // Get the 'navigate' function from React Router
+    const location = useLocation(); // Get the current location from React Router
 
+    // Function to clear a field by setting it to an empty string
     const clearField = (setter) => {
         setter('');
     };
 
+    // Function to handle numeric input changes, allowing only non-negative values
     const handleNumericChange = (event, setter) => {
         const value = event.target.value;
         if (value >= 0) {
@@ -26,7 +29,7 @@ export const SearchForm = ({ onSearch }) => {
         }
     };
 
-    // Function to read URL query parameters
+    // Function to read URL query parameters and initialize state variables
     const getQueryParams = () => {
         const searchParams = new URLSearchParams(location.search);
         return {
@@ -41,7 +44,7 @@ export const SearchForm = ({ onSearch }) => {
         };
     };
 
-    // States
+    // Initialize state variables with values from URL query parameters
     const queryParams = getQueryParams();
     const [type, setType] = useState(queryParams.type);
     const [minPrice, setMinPrice] = useState(queryParams.minPrice);
@@ -52,9 +55,11 @@ export const SearchForm = ({ onSearch }) => {
     const [dateAddedEnd, setDateAddedEnd] = useState(queryParams.dateAddedEnd);
     const [postcodeArea, setPostcodeArea] = useState(queryParams.postcodeArea);
 
-    const [isFilterVisible, setIsFilterVisible] = useState(false);
+    const [isFilterVisible, setIsFilterVisible] = useState(false); // Initialize a state variable for filter visibility
+
+    // Function to handle form submission
     const handleSubmit = (event) => {
-        event.preventDefault();
+        event.preventDefault(); // Prevent the default form submission behavior
         const criteria = {
             type,
             minPrice,
@@ -65,15 +70,16 @@ export const SearchForm = ({ onSearch }) => {
             dateAddedEnd: dateAddedEnd ? dayjs(dateAddedEnd).format('YYYY-MM-DD') : '',
             postcodeArea
         };
-        onSearch(criteria);
+        onSearch(criteria); // Call the 'onSearch' callback with search criteria
 
         // Update URL with new query parameters
         const searchParams = new URLSearchParams(criteria).toString();
         navigate(`/?${searchParams}`);
 
-        setIsFilterVisible(false);
+        setIsFilterVisible(false); // Hide the filter after submission
     };
 
+    // Style for displaying the filter either centered or not centered
     const divStyle = !isFilterVisible ? {
         justifyContent: "center",
         alignItems: "center",
@@ -83,7 +89,7 @@ export const SearchForm = ({ onSearch }) => {
 
     return (
         <div style={divStyle}>
-            {isFilterVisible && (
+            {isFilterVisible && ( // Display the filter form when 'isFilterVisible' is true
                 <form onSubmit={handleSubmit}>
                     <Grid sx={{margin: "1em"}} container>
                         <Grid container spacing={1}>
@@ -206,7 +212,6 @@ export const SearchForm = ({ onSearch }) => {
                                     variant="outlined"
                                 />
                             </Grid>
-
 
                             <Grid item xs={4}>
                                 <Grid item xs={6}>

@@ -166,7 +166,6 @@
     font-size: 24px;
 }
 
-/* Add these to remove the default list styling from FontAwesome if it's in a list */
 .slide .fas::before {
     display: block;
     position: relative;
